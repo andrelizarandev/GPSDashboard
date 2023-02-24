@@ -17,14 +17,14 @@ import useGet from "../../functions/get";
 import DriverSearcherStyle from "./style";
 
 export default function DriverSearcher () {
-  const { startMutatePostGetGPSLocationsByDate, isLoading } = useGet();
+  const { startPostGetGPSLocationsByDate, isLoading } = useGet();
   const { isLoadingPostGetGPSLocationsByDate } = isLoading;
   return (
     <Stack sx={DriverSearcherStyle.MainContainer}>
       <Stack 
         sx={DriverSearcherStyle.MainPaddingContainer} 
         component='form' 
-        onSubmit={startMutatePostGetGPSLocationsByDate}
+        onSubmit={startPostGetGPSLocationsByDate}
       >
         <Form isLoading={isLoadingPostGetGPSLocationsByDate}/>
       </Stack>
@@ -61,7 +61,11 @@ function Form ({ isLoading }:any) {
         value={date}
         disabled={!isFormEnabled}
       />
-      <Blue500Button variant='contained' disabled={!isSubmitEnabled}>Buscar Localizaciones</Blue500Button>
+      <Blue500Button 
+        variant='contained' 
+        disabled={!isSubmitEnabled}
+        type='submit'
+      >Buscar Localizaciones</Blue500Button>
     </>
   )
 }

@@ -10,13 +10,17 @@ export type GetUserData = {
   companyId:string;
 }
 
-export type GetLocationData = {
-  long:number;
-  lat:number;
-  userId:string
-}
-
 export type PostGetGPSLocationByDriver = {
   _id:string;
   date:string;
+}
+
+export type PostGetGPSLocationByDriverResponse = {
+  data:LocationData[];
+}
+
+export type LocationData = {
+  latitude:number;
+  longitude:number;
+  timestamp:string;
 }

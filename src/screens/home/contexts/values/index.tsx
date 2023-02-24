@@ -3,7 +3,7 @@ import { createContext, useState } from "react"
 
 // Types
 import { ValuesContextPayload } from "./types";
-import { GetLocationData } from "../../../../api/home/types";
+import { LocationData } from "../../../../api/home/types";
 import { OptionData } from "../../../../components/_selectors/simple-selector/types";
 
 export const ValuesContext = createContext({} as ValuesContextPayload);
@@ -11,7 +11,7 @@ export const ValuesContext = createContext({} as ValuesContextPayload);
 export default function ValuesContextContainer ({ children }:any) {
 
   const [ userList, setUserList ] = useState<OptionData[]>([]);
-  const [ locationList, setLocationList ] = useState<GetLocationData[]>([]);
+  const [ locationList, setLocationList ] = useState<LocationData[]>([]);
 
   const payload = {
     userList, 

@@ -5,7 +5,7 @@ import { useMutation } from 'react-query';
 import { getUsersByCompanyApi, postGetGPSLocationsByDate } from '../../api/home';
 
 // Types
-import { GetUserData } from '../../api/home/types';
+import { GetUserData, LocationData } from '../../api/home/types';
 
 export default function useHomeQueries () {
   
@@ -15,8 +15,10 @@ export default function useHomeQueries () {
     });
   }
 
-  function usePostGetGPSLocationsByDate () {
-    return useMutation(postGetGPSLocationsByDate);
+  function usePostGetGPSLocationsByDate (onSuccess: (data:LocationData[]) => void) {
+    return useMutation(postGetGPSLocationsByDate, { 
+      onSuccess: ({ data }) => onSuccess(data.data)
+    });
   }
 
   return {

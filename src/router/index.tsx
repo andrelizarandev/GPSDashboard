@@ -1,6 +1,9 @@
 // Modules
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
+// Components
+import SnackbarContainer from '../containers/snackbar-container';
+
 // Icons
 import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Group';
@@ -15,12 +18,14 @@ import { RouterData } from './types';
 
 export default function Router () {
   return (
-    <BrowserRouter>
-      <Routes>
-        {visibleRoutes.map(({ route, element }, key) => <Route path={route} element={element} key={key}/>)}
-        {noVisibleRoutes.map(({ route, element }, key) => <Route path={route} element={element} key={key}/>)}
-      </Routes>
-    </BrowserRouter>
+    <SnackbarContainer>
+      <BrowserRouter>
+        <Routes>
+          {visibleRoutes.map(({ route, element }, key) => <Route path={route} element={element} key={key}/>)}
+          {noVisibleRoutes.map(({ route, element }, key) => <Route path={route} element={element} key={key}/>)}
+        </Routes>
+      </BrowserRouter>
+    </SnackbarContainer>
   )
 }
 

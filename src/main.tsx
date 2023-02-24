@@ -7,10 +7,12 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 // Contexts
 import MainContext from './contexts';
 
-// Router
-import Router from './router';
+// Dialogs
 import MessageDialog from './dialogs/message-dialog';
 import ConfirmDialog from './dialogs/confirm-dialog';
+
+// Router
+import Router from './router';
 
 const queryClient = new QueryClient()
 

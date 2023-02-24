@@ -1,10 +1,13 @@
 // Modules
 import { useContext } from 'react';
 import { ValuesContext } from '../../contexts/values';
-import { Alert, Stack, Typography } from '@mui/material';
+import { Alert, Paper, Stack, Typography } from '@mui/material';
 
 // Style
 import LocationListStyle from './style';
+
+// types
+import { LocationData } from '../../../../api/home/types';
 
 export default function LocationList () {
   return (
@@ -20,11 +23,23 @@ export default function LocationList () {
 function List () {
   const { locationList } = useContext(ValuesContext);
   return (
-    <Stack rowGap={2}>
-      {
-        !locationList.length 
-        && 
-        <Alert severity='warning'>No has seleccionado ningun usuario</Alert>}
+    <Stack sx={LocationListStyle.ListContainerParent}>
+      <Stack sx={LocationListStyle.ListContainer}>
+        {!locationList.length && <Alert severity='warning'>No has seleccionado ningun usuario</Alert>}
+        {locationList.map((data) => <LocationCard {...data}/>)}
+      </Stack>
     </Stack>
+  )
+}
+ 
+function LocationCard ({ latitude, longitude, timestamp }:LocationData) {
+  return (
+    <Paper sx={LocationListStyle.LocationCardContainer}>
+      <Stack sx={LocationListStyle.LocationCardPaddingContainer}>
+        <Typography variant='subtitle2'>Lat: {latitude}</Typography>
+        <Typography variant='subtitle2'>Long: {longitude}</Typography>
+        <Typography variant='caption'>{timestamp}</Typography>
+      </Stack>
+    </Paper>
   )
 }

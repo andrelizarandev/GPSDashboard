@@ -1,11 +1,13 @@
 // Modules
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { ValuesContext } from '../contexts/values';
 
 // Hooks
 import useGet from './get'
 
 export default function useOnCreate() {
   
+  const { locationList } = useContext(ValuesContext);
   const { isLoadingGet, startGetUsersByCompany } = useGet();
 
   function onCreate () {
@@ -13,6 +15,7 @@ export default function useOnCreate() {
   }
 
   useEffect(onCreate, []);
+  useEffect(() => console.log(locationList), [locationList]);
 
   return {
     isLoadingGet
