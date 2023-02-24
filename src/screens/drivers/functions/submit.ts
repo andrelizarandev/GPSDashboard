@@ -2,7 +2,6 @@
 import { useContext } from 'react';
 
 // Contexts
-import { ValuesContext } from '../contexts/values';
 import { UiContext } from '../../../contexts/ui-context';
 import { DialogContext } from '../../../contexts/dialog-context';
 
@@ -20,7 +19,6 @@ export default function useSubmit () {
   const { usePostDriver, usePutToggleDriverStatus } = useDriverQueries();
   const { setMessageDialog } = useContext(UiContext);
   const { closeConfirmDialog } = useContext(DialogContext);
-  const { selectedUser } = useContext(ValuesContext);
 
   const { 
     isLoading:isLoadingPostDriver,
@@ -41,8 +39,8 @@ export default function useSubmit () {
     mutatePostDriver(getPostDriverValues());
   }
 
-  function startPutToggleDriverStatus () {
-    mutatePutToggleDriverStatus(selectedUser!!);
+  function startPutToggleDriverStatus (id:string) {
+    mutatePutToggleDriverStatus(id);
   }
 
   function onSuccessPostDriver () {

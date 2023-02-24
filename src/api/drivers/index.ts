@@ -9,5 +9,5 @@ export function postDriverApi (data:PostDriverData) {
 }
 
 export function putToggleDriverStatus (id:string) {
-  return axiosInstanceWithAuth.put(`/driver/${id}/status`); 
+  return axiosInstanceWithAuth.patch(`/driver/change-status/${id}`); 
 }

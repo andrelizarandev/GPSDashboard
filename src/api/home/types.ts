@@ -8,6 +8,7 @@ export type GetUserData = {
   username:string;
   password:string;
   companyId:string;
+  status:boolean;
 }
 
 export type PostGetGPSLocationByDriver = {

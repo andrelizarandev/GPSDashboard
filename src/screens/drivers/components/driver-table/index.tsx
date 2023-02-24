@@ -56,14 +56,13 @@ function ActionButton () {
   )
 }
 
-function DriverRow ({ password, username, fullname, _id }:GetUserData) {
+function DriverRow ({ password, username, fullname, _id, status }:GetUserData) {
   return (
     <TableRow>
       <TransparentTableCell>{username}</TransparentTableCell>
       <TransparentTableCell>{fullname}</TransparentTableCell>
       <TransparentTableCell>{password}</TransparentTableCell>
-      <TransparentTableCell>ALTA</TransparentTableCell>
-      <TransparentTableCell></TransparentTableCell>
+      <TransparentTableCell>{status ? 'ALTA' : 'BAJA'}</TransparentTableCell>
       <DeleteButton _id={_id}/>
     </TableRow>
   )
@@ -80,4 +79,4 @@ function DeleteButton ({ _id }:any) {
   )
 }
 
-const columns = ['Usuario', 'Nombre', 'Contraseña', 'Estado', 'Fecha de Alta', 'Dar de Baja']
+const columns = ['Usuario', 'Nombre', 'Contraseña', 'Estado', 'Dar de Baja']

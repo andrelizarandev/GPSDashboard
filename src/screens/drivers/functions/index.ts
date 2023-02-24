@@ -3,20 +3,22 @@ import { useContext } from 'react';
 
 // Contexts
 import { DialogContext } from '../../../contexts/dialog-context';
-import { ValuesContext } from '../contexts/values';
+
+// Hooks
+import useSubmit from './submit';
 
 export default function useFunctions () {
 
-  const { setSelectedUser } = useContext(ValuesContext);
+  const { startPutToggleDriverStatus, isLoading } = useSubmit();
+  const { isLoadingPutToggleDriverStatus } = isLoading;
   const { setConfirmDialogData } = useContext(DialogContext);
   
   function selectDriverToToggleStatus (id:string) {
-    setSelectedUser(id);
     setConfirmDialogData({ 
       title:'Cambiar estatus de conductor',
       body:'¿Estás seguro de cambiar el estatus del conductor?',
-      isLoading:false,
-      onSubmit:() => {}
+      isLoading:isLoadingPutToggleDriverStatus,
+      onSubmit:() => startPutToggleDriverStatus(id)
     })
   }
 

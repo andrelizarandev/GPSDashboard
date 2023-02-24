@@ -11,11 +11,11 @@ import { FormContext } from '../../contexts/form';
 import { DialogContext } from '../../../../contexts/dialog-context';
 
 // Hooks
+import useSubmit from '../../functions/submit';
 import useCleanAndClose from '../../functions/cleanAndClose';
 
 // Style
 import { FlexStyle } from '../../../../styles/flex';
-import useSubmit from '../../functions/submit';
 
 export default function SubmitDriverDialog () {
 
@@ -54,7 +54,7 @@ export default function SubmitDriverDialog () {
         size='small' 
         label='Usuario'
         disabled={!isFormEnabled}
-        helperText='Con este usuario podrán iniciar sesión'
+        helperText='Con este usuario podrán iniciar sesión en la app móvil'
       />
 
       <TextField 
